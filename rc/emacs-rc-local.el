@@ -1,9 +1,12 @@
 ;;; emacs-rc-local.el ---
 
 ;; load color theme before doing anything else! (requires emacs-24)
-(when (fboundp 'load-theme)
-  (load-theme 'misterioso))
-;; tat's better ;)
+;;(when (fboundp 'load-theme)
+;;  (load-theme 'wombat))
+;;(color-theme-initialize)
+;;(color-theme-zenburn)
+(setq solarized-contrast 'high)
+(load-theme 'solarized-dark)
 
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
@@ -15,7 +18,7 @@
  auto-save-interval 512            ;; autosave every 512 keyboard inputs
  auto-save-list-file-prefix nil
  browse-url-browser-function 'browse-url-generic
- browse-url-generic-program "/usr/bin/chromium"
+ browse-url-generic-program "/usr/bin/google-chrome"
  color-theme-is-global t
  echo-keystrokes 0.01              ;; see what you type
  inhibit-startup-message t         ;; don't show annoing startup msg
@@ -100,7 +103,7 @@
   tramp-default-method "ssh"
   tramp-persistency-file-name (concat root-dir "cache/tramp"))
 
-(set-frame-font "Monaco-11")
+(set-frame-font "Dejavu Sans Mono-10")
 
 (mouse-avoidance-mode 'cat-and-mouse)
 

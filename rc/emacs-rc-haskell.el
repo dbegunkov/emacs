@@ -7,7 +7,8 @@
   (add-hook 'haskell-mode-hook 'run-coding-hook)
   (add-hook 'haskell-mode-hook '(lambda ()
 				  (turn-on-haskell-doc-mode)
-				  (turn-on-haskell-indent))))
+				  (turn-on-haskell-indentation)
+                  (setq haskell-font-lock-symbols t))))
 
 
 ;;; emacs-rc-haskell.el ends here

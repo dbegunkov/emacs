@@ -1,5 +1,20 @@
 ;;; emacs-rc-bindings.el ---
+;; Bells and whistles
+(defcustom solarized-cycle-next 'solarized-dark ""
+  :group 'solarized)
+(defcustom solarized-cycle-current 'solarized-light ""
+  :group 'solarized)
+(defun cycle-solarized ()
+  "Cycles through solarized-dark and solarized-light"
+  (interactive)
+  (let ((next solarized-cycle-next)
+        (curr solarized-cycle-current))
+    (setq solarized-cycle-next curr)
+    (setq solarized-cycle-current next)
+    (load-theme next)
+    (message "%s" next)))
 
+(global-set-key (kbd "C-M-`") 'cycle-solarized)
 
 ;; Font size
 (global-set-key (kbd "C-+") 'text-scale-increase)

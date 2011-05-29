@@ -10,5 +10,6 @@
            (require 'erlang-flymake nil t))
   (erlang-flymake-only-on-save))
 
+(add-hook 'erlang-mode-hook 'run-coding-hook)
 
 ;;; emacs-rc-erlang.el ends here
