@@ -6,7 +6,7 @@ el-get/
 custom.el
 ac-comphist.dat
 tramp
-
+session.*
 *.elc
 /bookmarks
 /url/cookies
