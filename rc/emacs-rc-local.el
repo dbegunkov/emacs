@@ -33,9 +33,9 @@
  scroll-up-aggressively 0          ;; ... are very ...
  scroll-down-aggressively 0        ;; ... annoying
  scroll-preserve-screen-position t ;; preserve screen pos with C-v / M-v
- whitespace-style '(trailing lines space-before-tab
+ whitespace-style '(trailing lines-tail space-before-tab
                              indentation space-after-tab)
- whitespace-line-column 100
+ whitespace-line-column 80
  x-select-enable-clipboard t)
 
 (setq-default default-directory "~"
@@ -108,7 +108,7 @@
 (mouse-avoidance-mode 'cat-and-mouse)
 
 (global-linum-mode 0)   ;; no line number unless i say so ...
-(global-hl-line-mode 1) ;; ... and please add line highlighting ...
+;;(global-hl-line-mode 1) ;; ... and please add line highlighting ...
 (blink-cursor-mode -1)  ;; ... and cut that blinking out, okay?
 
 (setq

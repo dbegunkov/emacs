@@ -26,12 +26,6 @@
 (setq el-get-sources
       '(el-get
         ;; look-and-feel
-;;        color-theme
-;;        color-theme-zenburn
-;;        (:name zenburn-theme ;;this one won't work ;(
-;;               :type http
-;;               :url "https://github.com/djcb/elisp/raw/master/themes/zenburn-theme.el")
-;;               :url "https://bitbucket.org/kcfelix/zenburn-theme.el/raw/9e5f63d728f9/zenburn-theme.el")
         (:name emacs-color-theme-solarized
                :type git
                :url "https://github.com/sellout/emacs-color-theme-solarized.git")
