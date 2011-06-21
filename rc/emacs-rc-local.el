@@ -110,7 +110,7 @@
 (mouse-avoidance-mode 'cat-and-mouse)
 
 (global-linum-mode 0)   ;; no line number unless i say so ...
-;;(global-hl-line-mode 1) ;; ... and please add line highlighting ...
+(global-hl-line-mode 1) ;; ... and please add line highlighting ...
 (blink-cursor-mode -1)  ;; ... and cut that blinking out, okay?
 
 (setq
@@ -156,7 +156,6 @@
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
 
-
 (when (and (require 'auto-complete nil t)
            (require 'auto-complete-config nil t))
   (setq ac-comphist-file (concat root-dir "cache/ac-comphist.dat")
@@ -170,5 +169,10 @@
 ;; content to reflect what's on-disk.
 (global-auto-revert-mode 1)
 
+;; Window title contains file name now (more useful than emacs@hostname)
+(setq frame-title-format
+  '((:eval (if (buffer-file-name)
+           (abbreviate-file-name (buffer-file-name))
+           "%b")) " [%*]"))
 
 ;;; emacs-rc-local.el ends here

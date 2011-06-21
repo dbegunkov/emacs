@@ -48,7 +48,6 @@
                         (setq nav-width 25)
                         (global-set-key (kbd "C-x C-n") 'nav)))))
 
-
 (el-get 'sync)
 
 (mapc (lambda (name)
@@ -63,14 +62,13 @@
 ;;(setq custom-file (concat root-dir "custom.el"))
 ;;(load custom-file t)
 
-
 ;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("b1ff9bdbf5adc046623e2338607fa5d48f9b5da1" default))))
+ '(custom-safe-themes (quote ("eb51a82a78282295183d57ed6840fed00eb9f8c5" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
