@@ -6,7 +6,9 @@
 ;;(color-theme-initialize)
 ;;(color-theme-zenburn)
 (setq solarized-contrast 'high)
-(load-theme 'solarized-dark)
+;;(load-theme 'solarized-dark)
+(load-theme 'zenburn)
+(rainbow-delimiters-mode)
 
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
