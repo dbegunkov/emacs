@@ -6,12 +6,12 @@
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\|\\.markdown" . markdown-mode))
 
-(require 'django-html-mode)
-(add-to-list 'auto-mode-alist '("\\.html\\'" . django-html-mode))
+;;(require 'django-html-mode)
+;;(add-to-list 'auto-mode-alist '("\\.html\\'" . django-html-mode))
 
 (add-hook 'sgml-mode-hook
           (lambda ()
-            (setq tab-width 2)
+;;            (setq tab-width 2)
             (auto-complete-mode)))
 
 

@@ -8,7 +8,7 @@
 (setq solarized-contrast 'high)
 ;;(load-theme 'solarized-dark)
 (load-theme 'zenburn)
-(rainbow-delimiters-mode)
+;;(rainbow-delimiters-mode)
 
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
@@ -174,5 +174,7 @@
   '((:eval (if (buffer-file-name)
            (abbreviate-file-name (buffer-file-name))
            "%b")) " [%*]"))
+
+(setq c-basic-offset 4)
 
 ;;; emacs-rc-local.el ends here

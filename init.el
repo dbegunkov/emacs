@@ -10,7 +10,6 @@
  root-dir (file-name-directory (or (buffer-file-name)
                                    load-file-name)))
 
-
 (add-to-list 'load-path root-dir)
 (add-to-list 'load-path (concat root-dir "el-get/el-get"))
 
@@ -19,7 +18,7 @@
   (url-retrieve
    "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
    (lambda (s)
-     (end-of-buffer)
+    ;; (end-of-buffer)
      (eval-print-last-sexp))))
 
 
@@ -29,15 +28,15 @@
         (:name emacs-color-theme-solarized
                :type git
                :url "https://github.com/sellout/emacs-color-theme-solarized.git")
-        (:name rainbow-delimiters :type emacswiki)
+        rainbow-delimiters
         ;; generally useful stuff
         autopair auto-complete icomplete+ session scratch
         grep+ multi-term ;;yasnippet
         ;; vcs
         ahg magit
         ;; programming languages
-        coffee-mode haskell-mode python-mode django-mode js2-mode
-        tuareg-mode quack
+        coffee-mode python-mode js2-mode ;; haskell-mode django-mode
+                                         ;;tuareg-mode quack
         ;; markup
         markdown-mode org-mode rainbow-mode ;; auctex
         ;; rest

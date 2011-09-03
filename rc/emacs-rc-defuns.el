@@ -20,7 +20,7 @@
 (add-hook 'coding-hook 'add-watchwords)
 (add-hook 'coding-hook 'turn-on-hideshow)
 (add-hook 'coding-hook 'turn-on-linum)
-(add-hook 'coding-hook 'rainbow-delimiters-mode)
+;;(add-hook 'coding-hook 'rainbow-delimiters-mode)
 
 
 (defun run-coding-hook ()
