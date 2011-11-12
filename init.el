@@ -22,7 +22,7 @@
          ;rainbow-mode ;;colorize color names in buffers
          ;;useful stuff
          autopair auto-complete icomplete+ session grep+ ;;yasnippet
-         org-mode
+         org-mode undo-tree-mode
          ;;vcs
          magit
          ;;language-specific modes
@@ -69,4 +69,3 @@
 (require 'showoff-mode)
 (add-to-list 'load-path "~/.emacs.d/extra-libs/nitrogen-mode")
 (require 'nitrogen-mode)
-
