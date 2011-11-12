@@ -28,10 +28,14 @@
   (global-set-key (kbd "C-x f") 'recentf-ido-find-file))
 
 ;; Editing
-(global-set-key (kbd "C-c C-j") 'join-line)
 (global-set-key (kbd "<delete>") 'delete-char)
 (global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-x C-z") nil) ;;I hate that suspend feature
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
 (global-set-key (kbd "C-.") 'textmate-shift-right)
 (global-set-key (kbd "C-,") 'textmate-shift-left)
+
+(setq cua-enable-cua-keys nil) ;; only for rectangles
+(setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
+(cua-mode t)

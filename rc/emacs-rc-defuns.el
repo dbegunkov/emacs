@@ -6,6 +6,8 @@
 
 (defun turn-on-linum () (linum-mode t))
 
+(defun turn-on-undo-tree-mode () (undo-tree-mode t))
+
 (defun add-watchwords ()
   (font-lock-add-keywords
    nil
@@ -19,6 +21,7 @@
 (add-hook 'coding-hook 'turn-on-linum)
 (add-hook 'coding-hook 'auto-complete-mode)
 (add-hook 'coding-hook 'rainbow-delimiters-mode)
+(add-hook 'coding-hook 'turn-on-undo-tree-mode)
 
 (defun run-coding-hook ()
   (interactive)
