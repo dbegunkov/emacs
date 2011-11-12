@@ -24,11 +24,11 @@
          autopair auto-complete icomplete+ session grep+ ;;yasnippet
          org-mode undo-tree
          ;;vcs
-         magit
+         magit magithub
          ;;language-specific modes
          coffee-mode js2-mode ;python-mode
          haskell-mode haskell-mode-exts shime
-         clojure-mode slime paredit
+         clojure-mode slime paredit elein
          markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
