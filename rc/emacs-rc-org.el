@@ -1,6 +1,3 @@
-;;; emacs-rc-org.el ---
-
-
 (require 'org)
 
 (setq org-directory (concat (getenv "HOME") "/Documents/org/")
@@ -55,7 +52,4 @@
 (add-hook 'org-shiftright-hook 'windmove-right)
 
 ;; Weather
-(require 'org-google-weather nil t)
-
-
-;;; emacs-rc-org.el ends here
+;(require 'org-google-weather nil t)

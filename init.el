@@ -1,77 +1,72 @@
-;;; init.el ---
-
-
-(menu-bar-mode -1)
+(menu-bar-mode 1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (end-of-buffer)
+     (eval-print-last-sexp))))
+
+;; local sources
+(setq el-get-sources
+      '())
+
+(setq my-packages
+      (append
+       '(;;look-and-feel
+         rainbow-delimiters zenburn-theme
+         ;rainbow-mode ;;colorize color names in buffers
+         ;;useful stuff
+         autopair auto-complete icomplete+ session grep+ ;;yasnippet
+         org-mode
+         ;;vcs
+         magit
+         ;;language-specific modes
+         coffee-mode js2-mode ;python-mode
+         haskell-mode haskell-mode-exts shime
+         clojure-mode slime
+         markdown-mode)
+       (mapcar 'el-get-source-name el-get-sources)))
+
+(el-get 'sync my-packages)
+
+(el-get 'sync)
+(el-get 'wait)
 
 (setq
  root-dir (file-name-directory (or (buffer-file-name)
                                    load-file-name)))
 
-(add-to-list 'load-path root-dir)
-(add-to-list 'load-path (concat root-dir "el-get/el-get"))
-
-
-(unless (require 'el-get nil t)
-  (url-retrieve
-   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
-   (lambda (s)
-    ;; (end-of-buffer)
-     (eval-print-last-sexp))))
-
-
-(setq el-get-sources
-      '(el-get
-        ;; look-and-feel
-        (:name emacs-color-theme-solarized
-               :type git
-               :url "https://github.com/sellout/emacs-color-theme-solarized.git")
-        rainbow-delimiters
-        ;; generally useful stuff
-        autopair auto-complete icomplete+ session scratch
-        grep+ multi-term ;;yasnippet
-        ;; vcs
-        ahg magit
-        ;; programming languages
-        coffee-mode python-mode js2-mode ;; haskell-mode django-mode
-                                         ;;tuareg-mode quack
-        ;; markup
-        markdown-mode org-mode rainbow-mode ;; auctex
-        ;; rest
-        google-weather
-
-        (:name nav
-               :after (lambda ()
-                        (setq nav-width 25)
-                        (global-set-key (kbd "C-x C-n") 'nav)))))
-
-(el-get 'sync)
-
-(mapc (lambda (name)
-        (load (concat root-dir
-                      (format "rc/emacs-rc-%s" name)) t))
-      '(defuns erlang flymake flyspell haskell ido js lisp local markup
-         org python ;;yasnippet
-
-         bindings))
-
-
-;;(setq custom-file (concat root-dir "custom.el"))
-;;(load custom-file t)
-
-;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("3c221cf1a0a4172917772c71da5c4d5e1d4f98c4" default))))
+ '(custom-safe-themes (quote ("9cdf9fb94f560902b567b73f65c2ed4e5cfbaafe" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(mapc (lambda (name)
+        (load (concat root-dir
+                      (format "rc/emacs-rc-%s" name)) t))
+
+
+      '(defuns flymake flyspell ido local
+        markup
+        org
+        python octave erlang haskell js lisp
+        bindings))
+
+(add-to-list 'load-path "~/.emacs.d/extra-libs/showoff-mode")
+(require 'showoff-mode)
+(add-to-list 'load-path "~/.emacs.d/extra-libs/nitrogen-mode")
+(require 'nitrogen-mode)
 

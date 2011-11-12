@@ -1,6 +1,3 @@
-;;; emacs-rc-haskell.el ---
-
-
 (when (load "haskell-site-file.el" t nil nil)
   (add-to-list 'auto-mode-alist  '("\\.hs$" . haskell-mode))
 
@@ -9,6 +6,3 @@
 				  (turn-on-haskell-doc-mode)
 				  (turn-on-haskell-indentation)
                   (setq haskell-font-lock-symbols t))))
-
-
-;;; emacs-rc-haskell.el ends here

@@ -1,4 +1,3 @@
-;;; emacs-rc-bindings.el ---
 ;; Bells and whistles
 (defcustom solarized-cycle-next 'solarized-dark ""
   :group 'solarized)
@@ -36,24 +35,3 @@
 (global-set-key (kbd "M-<down>") 'move-line-down)
 (global-set-key (kbd "C-.") 'textmate-shift-right)
 (global-set-key (kbd "C-,") 'textmate-shift-left)
-
-;; Misc
-(when (featurep 'org)
-  (global-set-key (kbd "\C-ca") 'org-agenda)
-  (global-set-key (kbd "\C-cc") 'org-capture)
-  (global-set-key (kbd "\C-cl") 'org-store-link))
-
-(when (fboundp 'magit-status)
-  (global-set-key (kbd "C-x C-g") 'magit-status))
-
-(when (fboundp 'ahg-status)
-  (global-set-key (kbd "C-x C-m") 'ahg-status))
-
-(when (fboundp 'scratch)
-  (global-set-key (kbd "C-x C-\\") 'scratch))
-
-(when (featurep 'multi-term)
-  (global-set-key (kbd "M-`") 'multi-term-dedicated-toggle))
-
-
-;;; emacs-rc-bindings.el ends here

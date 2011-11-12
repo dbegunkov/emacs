@@ -1,6 +1,3 @@
-;;; emacs-rc-ido.el ---
-
-
 (require 'ido)
 (ido-mode 'both)
 (ido-everywhere t)
@@ -23,6 +20,3 @@
  ido-max-prospects 10)
 
 (setq confirm-nonexistent-file-or-buffer nil)
-
-
-;;; emacs-rc-ido.el ends here

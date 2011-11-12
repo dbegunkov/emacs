@@ -1,6 +1,3 @@
-;;; emacs-rs-js.el ---
-
-
 (require 'js2-mode nil t)
 (require 'coffee-mode) ;; nice couple :)
 
@@ -22,6 +19,3 @@
       js2-bounce-indent-p t
       js2-global-externs '("console")
       js2-electric-keys '(";" "," "*", "{", "("))
-
-
-;;; emacs-rs-js.el ends here

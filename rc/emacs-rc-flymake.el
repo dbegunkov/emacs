@@ -1,5 +1,3 @@
-;;; emacs-rc-flymake.el ---
-
 (require 'flymake)
 
 (defun show-fly-err-at-point ()
@@ -51,6 +49,3 @@ it)"
   (flymake-template-init (or checker "pyflakes")))
 
 (add-to-list 'flymake-allowed-file-name-masks '("\\.py\\'" flymake-python-init))
-
-
-;;; emacs-rc-flymake.el ends here

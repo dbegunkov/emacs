@@ -1,14 +1,7 @@
-;;; emacs-rc-local.el ---
-
 ;; load color theme before doing anything else! (requires emacs-24)
-;;(when (fboundp 'load-theme)
-;;  (load-theme 'wombat))
-;;(color-theme-initialize)
-;;(color-theme-zenburn)
-(setq solarized-contrast 'high)
+;;(setq solarized-contrast 'high)
 ;;(load-theme 'solarized-dark)
 (load-theme 'zenburn)
-;;(rainbow-delimiters-mode)
 
 (defvar coding-hook nil
   "Hook that gets run on activation of any programming mode.")
@@ -117,12 +110,10 @@
  cursor-in-non-selected-windows nil
  use-dialog-box nil)
 
-
 ;; Modeline
 (column-number-mode t)
 (line-number-mode t)
 (size-indication-mode t)
-
 
 ;; Minibuffer
 (setq
@@ -151,7 +142,6 @@
   (remq 'process-kill-buffer-query-function
         kill-buffer-query-functions))
 
-
 (require 'windmove)
 (windmove-default-keybindings)
 (setq windmove-wrap-around t)
@@ -162,7 +152,6 @@
         ac-candidate-limit 20
         ac-ignore-case nil)
   (global-auto-complete-mode))
-
 
 ;; whenever an external process changes a file underneath emacs, and there
 ;; was no unsaved changes in the corresponding buffer, just revert its
@@ -176,5 +165,3 @@
            "%b")) " [%*]"))
 
 (setq c-basic-offset 4)
-
-;;; emacs-rc-local.el ends here

@@ -1,6 +1,3 @@
-;;; emacs-rc-yasnippet.el ---
-
-
 (require 'yasnippet)
 (require 'dropdown-list)
 
@@ -19,7 +16,4 @@
                             (insert "template")
                             (yas/expand)))))
       '(python-mode-hook emacs-lisp-mode))
-
-
-;;; emacs-rc-yasnippet.el ends here
 

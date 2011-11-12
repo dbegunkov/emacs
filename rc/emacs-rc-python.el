@@ -1,6 +1,3 @@
-;;; emacs-rc-python.el ---
-
-
 (when (require 'python-mode nil t)
   (add-hook 'python-mode-hook 'run-coding-hook)
   (add-hook 'python-mode-hook
@@ -9,5 +6,3 @@
                       (list #'autopair-default-handle-action
                             #'autopair-python-triple-quote-action)))))
 
-
-;;; emacs-rc-python.el ends here

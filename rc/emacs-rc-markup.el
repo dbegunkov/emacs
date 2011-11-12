@@ -1,6 +1,3 @@
-;;; emacs-rc-markup.el ---
-
-
 (require 'markdown-mode)
 (autoload 'markdown-mode "markdown-mode.el"
   "Major mode for editing Markdown files" t)
@@ -23,4 +20,3 @@
   (add-to-list 'auto-mode-alist '("\\.po\\'\\|\\.po\\." . po-mode))
   (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t))
 
-;;; emacs-rc-markup.el ends here
