@@ -22,13 +22,13 @@
          ;rainbow-mode ;;colorize color names in buffers
          ;;useful stuff
          autopair auto-complete icomplete+ session grep+ ;;yasnippet
-         org-mode undo-tree-mode
+         org-mode undo-tree
          ;;vcs
          magit
          ;;language-specific modes
          coffee-mode js2-mode ;python-mode
          haskell-mode haskell-mode-exts shime
-         clojure-mode slime
+         clojure-mode slime paredit
          markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
@@ -62,7 +62,7 @@
       '(defuns flymake flyspell ido local
         markup
         org
-        python octave erlang haskell js lisp
+        python octave erlang haskell js lisp clojure
         bindings))
 
 (add-to-list 'load-path "~/.emacs.d/extra-libs/showoff-mode")

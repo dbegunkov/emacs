@@ -5,14 +5,7 @@
 
 (add-to-list 'ac-modes 'erlang-mode)
 
-(when (and (require 'erlang-start nil t)
-                                        ;(require 'erlang-flymake nil t)
-           )
-  (erlang-flymake-only-on-save))
-
-
 (add-hook 'erlang-mode-hook 'run-coding-hook)
-
 
 (require 'flymake)
 (defun flymake-erlang-init ()
@@ -23,3 +16,5 @@
     (list "~/.emacs.d/extra-libs/eflymake/eflymake" (list local-file))))
 
 (add-to-list 'flymake-allowed-file-name-masks '("\\.erl\\'" flymake-erlang-init))
+
+(require 'erlang-start)
