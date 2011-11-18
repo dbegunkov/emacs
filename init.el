@@ -22,9 +22,9 @@
          ;rainbow-mode ;;colorize color names in buffers
          ;;useful stuff
          autopair auto-complete icomplete+ session grep+ ;;yasnippet
-         org-mode undo-tree
+         org-mode undo-tree smex
          ;;vcs
-         magit magithub
+         magit magithub gist
          ;;language-specific modes
          coffee-mode js2-mode ;python-mode
          haskell-mode haskell-mode-exts shime
@@ -64,6 +64,8 @@
         org
         python octave erlang haskell js lisp clojure
         bindings))
+
+(load (concat root-dir "private.el"))
 
 (add-to-list 'load-path "~/.emacs.d/extra-libs/showoff-mode")
 (require 'showoff-mode)

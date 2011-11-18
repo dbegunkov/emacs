@@ -39,3 +39,8 @@
 (setq cua-enable-cua-keys nil) ;; only for rectangles
 (setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
 (cua-mode t)
+
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)

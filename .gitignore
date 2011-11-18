@@ -3,7 +3,7 @@
 auto-save-list/
 cache/
 el-get/
-custom.el
+private.el
 ac-comphist.dat
 tramp
 session.*
