@@ -8,13 +8,17 @@
 
 (defun turn-on-undo-tree-mode () (undo-tree-mode t))
 
+(defun turn-on-flymake () (flymake-mode t))
+
 (defun add-watchwords ()
   (font-lock-add-keywords
    nil
    '(("\\<\\(FIX\\|FIXME\\|TODO\\|BUG\\|XXX\\):"
       1 font-lock-warning-face t))))
 
-(add-hook 'coding-hook 'autopair-on)
+(add-hook 'coding-hook 'electric-pair-mode)
+(add-hook 'coding-hook 'electric-layout-mode)
+(add-hook 'coding-hook 'electric-indent-mode)
 (add-hook 'coding-hook 'turn-on-whitespace)
 (add-hook 'coding-hook 'add-watchwords)
 ;(add-hook 'coding-hook 'turn-on-hideshow)
@@ -82,3 +86,10 @@ A place is considered `tab-width' character columns."
          (command (format "echo `< /dev/urandom tr -dc '%s' | head -c%i`"
                           alphabet length)))
     (shell-command-to-string command)))
+
+(eval-after-load "flymake"
+  '(progn
+    (defun flymake-after-change-function (start stop len)
+      "Start syntax check for current buffer if it isn't already running."
+      ;; Do nothing, don't want to run checks until I save.
+      )))

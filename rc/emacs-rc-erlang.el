@@ -6,6 +6,7 @@
 (add-to-list 'ac-modes 'erlang-mode)
 
 (add-hook 'erlang-mode-hook 'run-coding-hook)
+(add-hook 'erlang-mode-hook 'turn-on-flymake)
 
 (require 'flymake)
 (defun flymake-erlang-init ()

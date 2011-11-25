@@ -21,8 +21,8 @@
          rainbow-delimiters zenburn-theme
          ;rainbow-mode ;;colorize color names in buffers
          ;;useful stuff
-         autopair auto-complete icomplete+ session grep+ ;;yasnippet
-         org-mode undo-tree smex
+         auto-complete icomplete+ session grep+ ;;yasnippet
+         org-mode undo-tree smex ace-jump-mode
          ;;vcs
          magit magithub gist
          ;;language-specific modes
@@ -46,7 +46,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("9cdf9fb94f560902b567b73f65c2ed4e5cfbaafe" default))))
+ '(custom-safe-themes (quote ("3c221cf1a0a4172917772c71da5c4d5e1d4f98c4" "9cdf9fb94f560902b567b73f65c2ed4e5cfbaafe" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

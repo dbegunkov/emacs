@@ -30,6 +30,7 @@
 ;; Editing
 (global-set-key (kbd "<delete>") 'delete-char)
 (global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-Z") 'undo-tree-visualize)
 (global-set-key (kbd "C-x C-z") nil) ;;I hate that suspend feature
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
@@ -44,3 +45,6 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
