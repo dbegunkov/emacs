@@ -10,3 +10,4 @@ session.*
 *.elc
 /bookmarks
 /url/cookies
+elpa/

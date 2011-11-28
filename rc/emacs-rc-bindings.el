@@ -30,7 +30,7 @@
 ;; Editing
 (global-set-key (kbd "<delete>") 'delete-char)
 (global-set-key (kbd "C-z") 'undo)
-(global-set-key (kbd "C-Z") 'undo-tree-visualize)
+(global-set-key (kbd "C-S-z") 'undo-tree-visualize)
 (global-set-key (kbd "C-x C-z") nil) ;;I hate that suspend feature
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
@@ -48,3 +48,6 @@
 
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+(require 'deft)
+(global-set-key [f8] 'deft)

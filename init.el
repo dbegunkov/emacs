@@ -61,7 +61,7 @@
 
       '(defuns flymake flyspell ido local
         markup
-        org
+        org deft
         python octave erlang haskell js lisp clojure
         bindings))
 
