@@ -22,13 +22,16 @@
          ;rainbow-mode ;;colorize color names in buffers
          ;;useful stuff
          auto-complete icomplete+ session grep+ ;;yasnippet
-         org-mode undo-tree smex ace-jump-mode
+         org-mode
+         undo-tree smex
+         ace-jump-mode iy-go-to-char
          ;;vcs
          magit magithub gist
          ;;language-specific modes
          coffee-mode js2-mode ;python-mode
          haskell-mode haskell-mode-exts shime
          clojure-mode slime paredit elein
+         ess
          markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
@@ -62,7 +65,7 @@
       '(defuns flymake flyspell ido local
         markup
         org deft
-        python octave erlang haskell js lisp clojure
+        python octave erlang haskell js lisp clojure R
         bindings))
 
 (load (concat root-dir "private.el"))
@@ -71,3 +74,5 @@
 (require 'showoff-mode)
 (add-to-list 'load-path "~/.emacs.d/extra-libs/nitrogen-mode")
 (require 'nitrogen-mode)
+
+(server-start)

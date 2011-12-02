@@ -47,7 +47,11 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 (require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-t") 'ace-jump-word-mode)
+(define-key global-map (kbd "M-t") 'ace-jump-line-mode)
 
 (require 'deft)
 (global-set-key [f8] 'deft)
+
+(require 'iy-go-to-char)
+(global-set-key (kbd "M-m") 'iy-go-to-char)
