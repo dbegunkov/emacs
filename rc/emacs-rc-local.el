@@ -99,6 +99,7 @@
   tramp-persistency-file-name (concat root-dir "cache/tramp"))
 
 (set-default-font "Dejavu Sans Mono-10")
+(add-to-list 'default-frame-alist '(font . "Dejavu Sans Mono-10"))
 
 (mouse-avoidance-mode 'cat-and-mouse)
 
