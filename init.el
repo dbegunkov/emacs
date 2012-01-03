@@ -14,7 +14,8 @@
 
 ;; local sources
 (setq el-get-sources
-      '())
+      '((:name ctags-update
+               :type emacswiki)))
 
 (setq my-packages
       (append
@@ -22,10 +23,11 @@
          rainbow-delimiters zenburn-theme
          ;rainbow-mode ;;colorize color names in buffers
          ;;useful stuff
-         auto-complete icomplete+ session grep+ ;;yasnippet
+         auto-complete icomplete+ grep+ ;;yasnippet session
          org-mode
          undo-tree smex
          ace-jump-mode
+         deft
          ;;vcs
          magit magithub gist
          ;;language-specific modes
@@ -33,6 +35,8 @@
          haskell-mode haskell-mode-exts shime
          clojure-mode slime paredit elein
          ess
+         haml-mode sass-mode rhtml-mode yaml-mode
+         inf-ruby ruby-compilation rvm rinari
          markdown-mode)
        (mapcar 'el-get-source-name el-get-sources)))
 
@@ -62,11 +66,11 @@
         (load (concat root-dir
                       (format "rc/emacs-rc-%s" name)) t))
 
-
       '(defuns flymake flyspell ido local
+        ecb tags
         markup
         org deft
-        python octave erlang haskell js lisp clojure R
+        python octave erlang haskell js lisp clojure R ror
         bindings))
 
 (load (concat root-dir "private.el"))

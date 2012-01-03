@@ -53,5 +53,7 @@
 (require 'deft)
 (global-set-key [f8] 'deft)
 
-(require 'iy-go-to-char)
-(global-set-key (kbd "M-m") 'iy-go-to-char)
+(global-set-key (kbd "M-<tab>") 'ecb-toggle-layout)
+
+;(require 'iy-go-to-char)
+;(global-set-key (kbd "M-m") 'iy-go-to-char)
