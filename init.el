@@ -8,8 +8,9 @@
   (url-retrieve
    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
    (lambda (s)
-     (end-of-buffer)
-     (eval-print-last-sexp))))
+     (let (el-get-master-branch)
+       (end-of-buffer)
+       (eval-print-last-sexp)))))
 
 ;; local sources
 (setq el-get-sources
@@ -24,7 +25,7 @@
          auto-complete icomplete+ session grep+ ;;yasnippet
          org-mode
          undo-tree smex
-         ace-jump-mode iy-go-to-char
+         ace-jump-mode
          ;;vcs
          magit magithub gist
          ;;language-specific modes
