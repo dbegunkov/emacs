@@ -1,6 +1,6 @@
 (setq erlang-root-dir "/usr/local/lib/erlang")
 
-(add-to-list 'load-path (concat erlang-root-dir "/lib/tools-2.6.6.5/emacs"))
+(add-to-list 'load-path (concat erlang-root-dir "/lib/tools-2.6.6.6/emacs"))
 (add-to-list 'exec-path (concat erlang-root-dir "/bin"))
 
 (add-to-list 'ac-modes 'erlang-mode)
