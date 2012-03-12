@@ -5,4 +5,10 @@
   (add-hook 'haskell-mode-hook '(lambda ()
 				  (turn-on-haskell-doc-mode)
 				  (turn-on-haskell-indentation)
-                  (setq haskell-font-lock-symbols t))))
+                  (setq haskell-font-lock-symbols t)))
+
+  (add-hook 'haskell-mode-hook '(lambda ()
+                                  (setq tab-width 4
+                                        haskell-indentation-layout-offset 4
+                                        haskell-indentation-left-offset 4
+                                        haskell-indentation-ifte-offset 4))))

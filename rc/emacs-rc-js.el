@@ -18,4 +18,5 @@
       js2-auto-indent-p 'nil
       js2-bounce-indent-p t
       js2-global-externs '("console")
-      js2-electric-keys '(";" "," "*", "{", "("))
+      js2-electric-keys '(";" "," "*", "{", "(")
+      scss-compile-at-save nil)
