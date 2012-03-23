@@ -78,7 +78,7 @@
 
       '(defuns flymake flyspell ido local
         ecb tags
-        markup
+        markup auctex
         org deft
         python octave erlang haskell js lisp clojure R ror
         bindings))
