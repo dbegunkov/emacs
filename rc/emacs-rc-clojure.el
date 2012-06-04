@@ -30,8 +30,10 @@
                                'zenburn-primary-5))))))
 
 (add-hook 'clojure-mode-hook 'paredit-mode-enable)
-(add-hook 'clojure-mode-hook '(lambda () (local-set-key (kbd "RET") 'electrify-return-if-match)))
 (add-hook 'clojure-mode-hook 'run-coding-hook)
+(add-hook 'clojure-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "RET") 'electrify-return-if-match)))
 
 ;; clojure-mode
 (require 'clojure-mode)

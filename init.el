@@ -76,11 +76,11 @@
         (load (concat root-dir
                       (format "rc/emacs-rc-%s" name)) t))
 
-      '(defuns flymake flyspell ido local
+      '(python octave erlang haskell js lisp clojure R ror
+        defuns flymake flyspell ido local
         ecb tags
         markup auctex
         org deft
-        python octave erlang haskell js lisp clojure R ror
         bindings))
 
 (load (concat root-dir "private.el"))
