@@ -20,3 +20,7 @@
       js2-global-externs '("console")
       js2-electric-keys '(";" "," "*", "{", "(")
       scss-compile-at-save nil)
+
+(add-hook 'coffee-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'tab-width) 2)))

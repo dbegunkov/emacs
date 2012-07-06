@@ -18,7 +18,7 @@
 
 (add-hook 'coding-hook 'electric-pair-mode)
 (add-hook 'coding-hook 'electric-layout-mode)
-(add-hook 'coding-hook 'electric-indent-mode)
+;(add-hook 'coding-hook 'electric-indent-mode)
 (add-hook 'coding-hook 'turn-on-whitespace)
 (add-hook 'coding-hook 'add-watchwords)
 ;(add-hook 'coding-hook 'turn-on-hideshow)
