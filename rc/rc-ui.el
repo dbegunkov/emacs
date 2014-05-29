@@ -2,9 +2,13 @@
 
 
 (when (window-system)
-  (let ((font-name "Monaco-14"))
+  (let ((font-name "Source Code Pro Medium-10"))
     (when (find-font (font-spec :name font-name))
       (set-frame-font font-name))))
+
+(set-fontset-font "fontset-default"
+                  '(#x0400 . #x04ff)
+                  "Dejavu Sans Mono-10")
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -46,9 +50,9 @@
           (setq sml/theme 'dark)
           (sml/setup)))
 
-(use-package base16-eighties-theme
-  :ensure base16-theme
-  :config (enable-theme 'base16-eighties))
+(use-package color-theme-sanityinc-tomorrow
+  :ensure color-theme-sanityinc-tomorrow
+  :config (load-theme 'sanityinc-tomorrow-eighties))
 
 
 ;;; rc-ui.el ends here

@@ -1,6 +1,5 @@
 ;;; init.el ---
 
-
 (defvar local-dir (file-name-directory user-init-file)
   "The root dir of the Emacs configuration.")
 
@@ -11,6 +10,9 @@
                 (file-exists-p parent-dir))
       (make-directory parent-dir))
     file-path))
+
+(setq custom-file (local-file-name "custom.el"))
+(load custom-file)
 
 (load (local-file-name "core/core-packages"))
 (load (local-file-name "core/core-env"))
@@ -24,12 +26,4 @@
 (load (local-file-name "rc/rc-defuns"))
 (load (local-file-name "rc/rc-global-bindings"))
 
-(setq custom-file (local-file-name "custom.el"))
-(load custom-file t)
-
-(add-to-list 'load-path "~/.emacs.d/extra-libs/showoff-mode")
-(require 'showoff-mode)
-(add-to-list 'load-path "~/.emacs.d/extra-libs/nitrogen-mode")
-(require 'nitrogen-mode)
-
-(server-start)
+;;; init.el ends here

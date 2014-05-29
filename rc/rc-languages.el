@@ -10,6 +10,10 @@
 (add-hook 'prog-mode-hook 'turn-on-whitespace)
 (add-hook 'prog-mode-hook 'turn-on-linum)
 
+;; Text
+
+(remove-hook 'text-mode-hook 'turn-on-auto-fill)
+
 ;; Python
 
 (use-package python-mode

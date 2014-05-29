@@ -9,7 +9,7 @@
               tab-width 4           ;; but maintain correct appearance
               case-fold-search t    ;; case INsensitive search
               default-directory "~"
-              fill-column 100)
+              fill-column 80)
 
 ;; delete the selection with a keypress
 (delete-selection-mode t)
@@ -90,7 +90,7 @@
 ;; use shift + arrow keys to switch between visible buffers
 (require 'windmove)
 (windmove-default-keybindings)
-(setq windmove-wrap-around t)
+(setq windmove-wrap-around nil)
 
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
@@ -111,10 +111,22 @@
 (require 'diminish)
 
 ;; subtle highlighting of matching parens (global-mode)
-(require 'smartparens)
-(require 'smartparens-config)
-(show-smartparens-global-mode t)
-(smartparens-global-mode 1)
+;; (require 'smartparens)
+;; (require 'smartparens-config)
+;; (show-smartparens-global-mode t)
+;; (smartparens-global-mode 1)
+
+(use-package rainbow-delimiters
+  :ensure rainbow-delimiters
+  :config (progn (global-rainbow-delimiters-mode)))
+
+;; (use-package paren
+;;   :ensure paren
+;;   :config (progn (show-paren-mode 0)
+;;                  (setq show-paren-style 'parenthesis)))
+
+;; (set-face-background 'show-paren-match "#6f6f6f")
+;; (set-face-foreground 'show-paren-match "#94bff3")
 
 ;; highlight the current line
 (global-hl-line-mode +1)
@@ -137,6 +149,10 @@
 (require 'ido)
 (require 'ido-ubiquitous)
 (require 'flx-ido)
+(use-package ido-vertical-mode
+  :ensure ido-vertical-mode
+  :config (progn
+            (ido-vertical-mode 1)))
 (ido-mode 'both)
 (ido-everywhere t)
 (ido-ubiquitous-mode +1)
@@ -171,9 +187,36 @@
   :init (add-hook 'after-init-hook #'global-flycheck-mode))
 
 ;; load auto-complete
-(use-package company
-  :ensure company
-  :init (global-company-mode))
+;; [no, don't load company, it's shitty]
+;; (use-package company
+;;   :ensure company
+;;   :init (global-company-mode))
+
+;; (require 'color)
+
+;; (let ((bg (face-attribute 'default :background)))
+;;   (custom-set-faces
+;;    `(company-tooltip ((t (:inherit default :background ,
+;;                                    (color-lighten-name bg 2)))))
+;;    `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
+;;    `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
+;;    `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
+;;    `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
+
+(use-package auto-complete
+  :ensure auto-complete
+  :config (progn
+            (add-to-list 'ac-dictionary-directories
+                         "~/.emacs.d/ac-dict")))
+(require 'auto-complete-config nil t)
+(ac-config-default)
+(setq ac-comphist-file "~/.emacs.d/cache/ac-comphist.dat"
+      ac-candidate-limit 20
+      ac-ignore-case nil)
+(global-auto-complete-mode)
+
+(add-hook 'prog-mode-hook 'auto-complete-mode)
+
 
 ;; ediff - don't start another frame
 (require 'ediff)
@@ -192,13 +235,6 @@
 
 (require 'eshell)
 (setq eshell-directory-name (local-file-name "cache/eshel"))
-
-;; better splits
-(use-package golden-ratio
-  :ensure golden-ratio
-  :init (progn
-          (golden-ratio-mode)
-          (diminish 'golden-ratio-mode)))
 
 ;; smex, remember recently and most frequently used commands
 (use-package smex
@@ -253,5 +289,8 @@
   :commands vlf
   :init (require 'vlf-integrate))
 
+(use-package expand-region
+  :ensure expand-region
+  :bind (("C-=" . er/expand-region)))
 
 ;;; rc-editor.el ends here

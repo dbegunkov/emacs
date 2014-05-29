@@ -11,3 +11,5 @@ session.*
 /bookmarks
 /url/cookies
 elpa
+custom.el
+var/
