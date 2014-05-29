@@ -1,3 +1,6 @@
+;;; rc-flyspell.el ---
+
+
 (require 'flyspell)
 (require 'ispell)
 
@@ -12,3 +15,6 @@
       flyspell-default-dictionary "english")
 
 (add-hook 'org-mode-hook 'flyspell-mode)
+
+
+;;; rc-flyspell.el ends here
