@@ -10,7 +10,7 @@
 
 ;; HTML, CSS
 
-(add-hook 'sgml-mode-hook (lambda () (setq tab-width 2)))
+;; (add-hook 'sgml-mode-hook (lambda () (setq tab-width 2)))
 
 (use-package rainbow-mode
   :ensure rainbow-mode
@@ -26,9 +26,9 @@
 
 ;; gettext
 
-(when (require 'po-mode nil t)
-  (add-to-list 'auto-mode-alist '("\\.po\\'\\|\\.po\\." . po-mode))
-  (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t))
+;; (when (require 'po-mode nil t)
+;;   (add-to-list 'auto-mode-alist '("\\.po\\'\\|\\.po\\." . po-mode))
+;;   (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t))
 
 ;; LaTeX via AucTeX
 

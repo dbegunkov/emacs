@@ -45,11 +45,9 @@
       uniquify-after-kill-buffer-p t     ;; rename after killing uniquified
       uniquify-ignore-buffers-re "^\\*") ;; don't muck with special buffers
 
-;; activate it for all buffers
-(setq-default save-place t)
-(require 'saveplace)
-
 ;; saveplace remembers your location in a file when saving files
+(require 'saveplace)
+(setq-default save-place t) ;; activate it for all buffers
 (setq save-place-file (local-file-name "cache/saveplace"))
 
 ;; savehist keeps track of some history
@@ -64,6 +62,7 @@
 (setq-default desktop-missing-file-warning nil
               desktop-load-locked-desktop t
               desktop-restore-eager 0
+              desktop-restore-frames 1
               desktop-path `(,(local-file-name "cache"))
               desktop-save t)
 (desktop-save-mode t)
@@ -126,17 +125,8 @@
   :ensure rainbow-delimiters
   :config (progn (global-rainbow-delimiters-mode)))
 
-;; (use-package paren
-;;   :ensure paren
-;;   :config (progn (show-paren-mode 0)
-;;                  (setq show-paren-style 'parenthesis)))
-
-;; (set-face-background 'show-paren-match "#6f6f6f")
-;; (set-face-foreground 'show-paren-match "#94bff3")
-
-
-;; highlight the current line
-(global-hl-line-mode +1)
+;; do not highlight the current line
+(global-hl-line-mode -1)
 
 (use-package volatile-highlights
   :ensure volatile-highlights
@@ -155,6 +145,8 @@
 (require 'ido)
 (require 'ido-ubiquitous)
 (require 'flx-ido)
+(require 'smex)
+
 (use-package ido-vertical-mode
   :ensure ido-vertical-mode
   :config (progn
@@ -202,34 +194,31 @@
 
 ;; load auto-complete
 ;; [no, don't load company, it's shitty]
-;; (use-package company
-;;   :ensure company
-;;   :init (global-company-mode))
+(use-package company
+  :ensure company
+  :init (global-company-mode))
 
-;; (require 'color)
+;; use TAB for completion and indentation
+(defun complete-or-indent ()
+  (interactive)
+  (if (company-manual-begin)
+      (company-complete-common)
+    (indent-according-to-mode)))
 
-;; (let ((bg (face-attribute 'default :background)))
-;;   (custom-set-faces
-;;    `(company-tooltip ((t (:inherit default :background ,
-;;                                    (color-lighten-name bg 2)))))
-;;    `(company-scrollbar-bg ((t (:background ,(color-lighten-name bg 10)))))
-;;    `(company-scrollbar-fg ((t (:background ,(color-lighten-name bg 5)))))
-;;    `(company-tooltip-selection ((t (:inherit font-lock-function-name-face))))
-;;    `(company-tooltip-common ((t (:inherit font-lock-constant-face))))))
+;; (use-package auto-complete
+;;   :ensure auto-complete
+;;   :config (progn
+;;             (add-to-list 'ac-dictionary-directories
+;;                          "~/.emacs.d/ac-dict")))
 
-(use-package auto-complete
-  :ensure auto-complete
-  :config (progn
-            (add-to-list 'ac-dictionary-directories
-                         "~/.emacs.d/ac-dict")))
-(require 'auto-complete-config nil t)
-(ac-config-default)
-(setq ac-comphist-file "~/.emacs.d/cache/ac-comphist.dat"
-      ac-candidate-limit 20
-      ac-ignore-case nil)
-(global-auto-complete-mode)
+;; (require 'auto-complete-config nil t)
+;; (ac-config-default)
+;; (setq ac-comphist-file "~/.emacs.d/cache/ac-comphist.dat"
+;;       ac-candidate-limit 20
+;;       ac-ignore-case nil)
+;; (global-auto-complete-mode)
 
-(add-hook 'prog-mode-hook 'auto-complete-mode)
+;; (add-hook 'prog-mode-hook 'auto-complete-mode)
 
 
 ;; ediff - don't start another frame

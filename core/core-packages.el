@@ -5,13 +5,10 @@
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (setq package-user-dir (local-file-name "packages"))
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
 
 (package-initialize)
 
@@ -20,12 +17,14 @@
     ido-ubiquitous
     flx-ido
     ido-vertical-mode
-    scratch
+    smex
+    ;; scratch
     diminish
     ;; exec-path-from-shell ;; not needed on Linux
     yasnippet
     dropdown-list
     use-package
+    base16-theme)
     "A list of packages to ensure are installed at launch.")
 
 (mapc #'(lambda (package)

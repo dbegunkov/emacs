@@ -7,7 +7,8 @@
 
 (custom-set-variables '(shell-file-name "zsh"))
 
-(modify-all-frames-parameters '((fullscreen . maximized)))
+(setq user-full-name "Dmitry Groshev")
+(setq user-mail-address "lambdadmitry@gmail.com")
 
 ;; don't need the following on Linux
 ;;
@@ -22,6 +23,5 @@
 ;; Emacs 24.3.
 ;; (when (functionp 'ns-toggle-fullscreen)
 ;;   (ns-toggle-fullscreen))
-
 
 ;;; core-env.el ends here
