@@ -13,3 +13,6 @@ session.*
 elpa
 custom.el
 var/
+custom.el*
+private.el*
+packages/
