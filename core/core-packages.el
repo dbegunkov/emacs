@@ -8,7 +8,7 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
-(setq package-user-dir (local-file-name "elpa"))
+(setq package-user-dir (local-file-name "packages"))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -25,8 +25,8 @@
     ;; exec-path-from-shell ;; not needed on Linux
     yasnippet
     dropdown-list
-    use-package)
-  "A list of packages to ensure are installed at launch.")
+    use-package
+    "A list of packages to ensure are installed at launch.")
 
 (mapc #'(lambda (package)
           (unless (package-installed-p package)
