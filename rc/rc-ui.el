@@ -25,7 +25,9 @@
  '(company-scrollbar-bg ((t (:background "#a09f93"))))
  '(company-scrollbar-fg ((t (:background "#e8e6df"))))
  '(company-preview ((t (:background "#747369" :foreground "#e8e6df"))))
- '(company-preview-common ((t (:background "#747369" :foreground "#e8e6df")))))
+ '(company-preview-common ((t (:background "#747369" :foreground "#e8e6df"))))
+ '(eval-sexp-fu-flash ((t (:background "#747369" :foreground "#e8e6df"))))
+ '(eval-sexp-fu-flash-error ((t (:background "#f99157" :foreground "#e8e6df")))))
 
 (set-fringe-mode '(7 . 1))
 (setq indicate-buffer-boundaries 'left)

@@ -16,5 +16,4 @@
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-S-z") 'redo)
 
-
 ;;; rc-global-bindings.el ends here

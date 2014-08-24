@@ -1,6 +1,5 @@
 ;;; rc-flyspell.el ---
 
-
 (require 'flyspell)
 (require 'ispell)
 

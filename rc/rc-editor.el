@@ -114,7 +114,25 @@
   :ensure smartparens
   :init (progn
           (show-smartparens-global-mode t)
-          (smartparens-global-mode 1)))
+          (smartparens-global-mode 1))
+  :config (progn
+            (require 'smartparens-config)
+            (setq sp-autoskip-closing-pair 'always)
+
+            (let ((map smartparens-mode-map))
+              ;; Depth changing
+              (define-key map (kbd "M-<up>") #'sp-splice-sexp-killing-backward)
+              (define-key map (kbd "M-<down>") #'sp-splice-sexp-killing-forward)
+              ;; Barfage & Slurpage
+              (define-key map (kbd "C-)")  #'sp-forward-slurp-sexp)
+              (define-key map (kbd "C-}")  #'sp-forward-barf-sexp)
+              (define-key map (kbd "C-(")  #'sp-backward-slurp-sexp)
+              (define-key map (kbd "C-{")  #'sp-backward-barf-sexp))
+
+            (let ((map smartparens-strict-mode-map))
+              (define-key map (kbd ")") #'sp-up-sexp)
+              (define-key map (kbd "]") #'sp-up-sexp)
+              (define-key map (kbd "}") #'sp-up-sexp))))
 
 ;; (require 'smartparens)
 ;; (require 'smartparens-config)
@@ -196,7 +214,9 @@
 ;; [no, don't load company, it's shitty]
 (use-package company
   :ensure company
-  :init (global-company-mode))
+  :init (global-company-mode)
+  :config (progn
+            (setq company-idle-delay 0.2)))
 
 ;; use TAB for completion and indentation
 (defun complete-or-indent ()
@@ -295,6 +315,12 @@
 ;; semantic region expansion
 (use-package expand-region
   :ensure expand-region
-  :bind ("C-=" . er/expand-region))
+  :bind ("C-=" . er/expand-region)
+        ("C--" . er/contract-region))
+
+;; better current major mode help
+(use-package discover-my-major
+  :ensure discover-my-major
+  :bind ("C-h C-m" . discover-my-major))
 
 ;;; rc-editor.el ends here
