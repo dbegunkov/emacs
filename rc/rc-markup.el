@@ -34,8 +34,11 @@
 
 (eval-after-load "tex"
   '(setcdr (assoc "LaTeX" TeX-command-list)
-          '("%`%l%(mode) -shell-escape%' %t"
-          TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")))
+           '("%`%l%(mode) -shell-escape%' %t"
+             TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")))
+
+(add-hook 'LaTeX-mode-hook '(lambda ()
+                              (TeX-PDF-mode 1)))
 
 ;; (use-package tex-site
 ;;   :ensure auctex
