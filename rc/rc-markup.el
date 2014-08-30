@@ -8,6 +8,11 @@
   :commands markdown-mode
   :mode "\\.md\\|\\.markdown")
 
+;; YAML
+
+(use-package yaml-mode
+  :ensure yaml-mode)
+
 ;; HTML, CSS
 
 ;; (add-hook 'sgml-mode-hook (lambda () (setq tab-width 2)))
