@@ -72,4 +72,10 @@
           (setq sml/theme 'dark)
           (sml/setup)))
 
+;; different splits
+(use-package golden-ratio
+  :ensure golden-ratio
+  :diminish golden-ratio-mode
+  :init (golden-ratio-mode))
+
 ;;; rc-ui.el ends here
