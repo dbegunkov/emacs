@@ -42,27 +42,32 @@
            '("%`%l%(mode) -shell-escape%' %t"
              TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")))
 
-(add-hook 'LaTeX-mode-hook '(lambda ()
-                              (TeX-PDF-mode 1)))
+;; (add-hook 'LaTeX-mode-hook '(lambda ()
+;;                               (TeX-PDF-mode 1)))
 
-;; (use-package tex-site
-;;   :ensure auctex
-;;   :init (progn
-;;           (when-osx
-;;               (setq TeX-view-program-list '(("Preview" "open %o"))
-;;                     TeX-view-program-selection '((output-pdf "Preview"))))
+(use-package company-auctex
+  :ensure company-auctex)
 
-;;           (require 'texmathp)
+(use-package tex-site
+  :ensure auctex
+  :init (progn
+          ;; (when-osx
+          ;;     (setq TeX-view-program-list '(("Preview" "open %o"))
+          ;;           TeX-view-program-selection '((output-pdf "Preview"))))
 
-;;           (setq TeX-auto-save t
-;;                 TeX-parse-self t
-;;                 TeX-DVI-via-PDFTeX t)
+          (require 'texmathp)
 
-;;           (add-hook 'LaTeX-mode-hook '(lambda ()
-;;                                         (LaTeX-math-mode 1)
-;;                                         (TeX-fold-mode 1)
-;;                                         (TeX-PDF-mode 1)
-;;                                         (outline-minor-mode 1)))))
+          (setq TeX-auto-save t
+                TeX-parse-self t
+                TeX-DVI-via-PDFTeX t)
+
+          (company-auctex-init)
+
+          (add-hook 'LaTeX-mode-hook '(lambda ()
+                                        ;; (LaTeX-math-mode 1)
+                                        (TeX-fold-mode 1)
+                                        (TeX-PDF-mode 1)
+                                        (outline-minor-mode 1)))))
 
 
 ;;; rc-markup.el ends here
