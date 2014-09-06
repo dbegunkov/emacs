@@ -13,12 +13,29 @@
 
 ;; Python
 
+(use-package virtualenvwrapper
+  :ensure virtualenvwrapper
+  :config (progn
+            (venv-initialize-interactive-shells) ;; interactive shell support
+            (venv-initialize-eshell)             ;; eshell support
+            (setq venv-location "~/.python-envs/")))
+
+(use-package anaconda-mode
+  :ensure anaconda-mode
+  :diminish anaconda-mode)
+
+(use-package company-anaconda
+  :ensure company-anaconda)
+
 (use-package python-mode
   :ensure python-mode
   :mode ("\\.py\\'" . python-mode)
   :commands python-mode
   :config (progn
-            (add-hook 'python-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+            (add-hook 'python-mode-hook
+                      (lambda () (run-hooks 'prog-mode-hook)))
+            (add-hook 'python-mode-hook 'anaconda-mode)
+            (add-hook 'python-mode-hook 'eldoc-mode)
             (add-hook 'python-mode-hook
                       (lambda ()
                         ;; See https://github.com/company-mode/company-mode/issues/105
