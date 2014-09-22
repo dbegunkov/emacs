@@ -86,6 +86,9 @@ A place is considered `tab-width' character columns."
   (interactive)
   (text-scale-increase 0))
 
+(use-package eval-sexp-fu
+  :ensure eval-sexp-fu)
+
 (require 'eval-sexp-fu)
 ;; taken from Emacs Live
 

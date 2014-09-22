@@ -25,7 +25,9 @@
   :diminish anaconda-mode)
 
 (use-package company-anaconda
-  :ensure company-anaconda)
+  :ensure company-anaconda
+  :config (progn
+            (add-to-list 'company-backends 'company-anaconda)))
 
 (use-package python-mode
   :ensure python-mode
@@ -256,20 +258,24 @@
                       '(lambda ()
                          (local-set-key (kbd "RET") 'electrify-return-if-match)))))
 
+;; (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+(when (not (package-installed-p 'cider))
+      (package-install 'cider))
 (use-package cider
   :ensure cider
   :config (progn
-            (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-            (add-hook 'cider-repl-mode-hook 'cider-turn-on-eldoc-mode)
-            (add-hook 'nrepl-connected-hook 'live-nrepl-set-print-length)
-            (add-hook 'cider-repl-mode-hook 'subword-mode)
-            (add-hook 'cider-repl-mode-hook 'smartparens-strict-mode)
-            (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
-            (setq nrepl-hide-special-buffers t)
-            (setq cider-popup-stacktraces nil)
-            (setq cider-repl-popup-stacktraces nil)
-            (setq cider-repl-use-clojure-font-lock t)
-            (live-esf-initialize-cider)))
+            ;; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+            ;; (add-hook 'cider-repl-mode-hook 'cider-turn-on-eldoc-mode)
+            ;; (add-hook 'nrepl-connected-hook 'live-nrepl-set-print-length)
+            ;; (add-hook 'cider-repl-mode-hook 'subword-mode)
+            ;; (add-hook 'cider-repl-mode-hook 'smartparens-strict-mode)
+            ;; (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+            ;; (setq nrepl-hide-special-buffers t)
+            ;; (setq cider-popup-stacktraces nil)
+            ;; (setq cider-repl-popup-stacktraces nil)
+            ;; (setq cider-repl-use-clojure-font-lock t)
+            ;; (live-esf-initialize-cider)
+            ))
 
 (use-package clojure-cheatsheet
   :ensure clojure-cheatsheet)
