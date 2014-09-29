@@ -15,6 +15,10 @@
 
 ;; HTML, CSS
 
+(add-hook 'css-mode-hook
+          '(lambda()
+             (setq css-indent-offset 2)))
+
 ;; (add-hook 'sgml-mode-hook (lambda () (setq tab-width 2)))
 
 (use-package rainbow-mode
