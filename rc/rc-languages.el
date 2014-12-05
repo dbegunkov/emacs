@@ -58,29 +58,29 @@
 
 ;; Erlang
 
-;; (require 'em-glob)
+(require 'em-glob)
 
-;; (setq erlang-root-dir
-;;       (if (eq system-type 'gnu/linux)
-;;           "/usr/lib/erlang"
-;;         "/usr/local/lib/erlang"))
+(setq erlang-root-dir
+      (if (eq system-type 'gnu/linux)
+          "/usr/local/lib/erlang"
+        "/usr/local/lib/erlang"))
 
-;; (defun directory-files-glob (path)
-;;   (directory-files (file-name-directory path)
-;;                    t
-;;                    (eshell-glob-regexp (file-name-nondirectory path))))
+(defun directory-files-glob (path)
+  (directory-files (file-name-directory path)
+                   t
+                   (eshell-glob-regexp (file-name-nondirectory path))))
 
-;; (defun directory-any-file-glob (path)
-;;   (car (directory-files-glob path)))
+(defun directory-any-file-glob (path)
+  (car (directory-files-glob path)))
 
-;; (when (file-exists-p erlang-root-dir)
-;;   (add-to-list 'load-path (concat
-;;                            (file-name-as-directory
-;;                             (directory-any-file-glob
-;;                              (concat erlang-root-dir "/lib/tools-*")))
-;;                            "emacs"))
+(when (file-exists-p erlang-root-dir)
+  (add-to-list 'load-path (concat
+                           (file-name-as-directory
+                            (directory-any-file-glob
+                             (concat erlang-root-dir "/lib/tools-*")))
+                           "emacs"))
 
-;;   (require 'erlang-start))
+  (require 'erlang-start))
 
 ;; Haskell
 
@@ -264,17 +264,17 @@
 (use-package cider
   :ensure cider
   :config (progn
-            ;; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-            ;; (add-hook 'cider-repl-mode-hook 'cider-turn-on-eldoc-mode)
-            ;; (add-hook 'nrepl-connected-hook 'live-nrepl-set-print-length)
-            ;; (add-hook 'cider-repl-mode-hook 'subword-mode)
-            ;; (add-hook 'cider-repl-mode-hook 'smartparens-strict-mode)
+            (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+            (add-hook 'cider-repl-mode-hook 'cider-turn-on-eldoc-mode)
+            (add-hook 'nrepl-connected-hook 'live-nrepl-set-print-length)
+            (add-hook 'cider-repl-mode-hook 'subword-mode)
+            (add-hook 'cider-repl-mode-hook 'smartparens-strict-mode)
             ;; (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
-            ;; (setq nrepl-hide-special-buffers t)
-            ;; (setq cider-popup-stacktraces nil)
+            (setq nrepl-hide-special-buffers t)
+            (setq cider-popup-stacktraces nil)
             ;; (setq cider-repl-popup-stacktraces nil)
-            ;; (setq cider-repl-use-clojure-font-lock t)
-            ;; (live-esf-initialize-cider)
+            (setq cider-repl-use-clojure-font-lock t)
+            (live-esf-initialize-cider)
             ))
 
 (use-package clojure-cheatsheet
