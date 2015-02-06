@@ -310,7 +310,7 @@
 (use-package vlf
   :ensure vlf
   :commands vlf
-  :init (require 'vlf-integrate))
+  :init (require 'vlf-setup))
 
 ;; semantic region expansion
 (use-package expand-region
