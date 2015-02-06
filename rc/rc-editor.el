@@ -207,12 +207,11 @@
                              yas-ido-prompt))
 
 ;; load flycheck
-(use-package flycheck
-  :ensure flycheck
-  :init (add-hook 'after-init-hook #'global-flycheck-mode))
+;; (use-package flycheck
+;;   :ensure flycheck
+;;   :init (add-hook 'after-init-hook #'global-flycheck-mode))
 
 ;; load auto-complete
-;; [no, don't load company, it's shitty]
 (use-package company
   :ensure company
   :init (global-company-mode)
@@ -323,5 +322,10 @@
 (use-package discover-my-major
   :ensure discover-my-major
   :bind ("C-h C-m" . discover-my-major))
+
+;; projectile for searching in projects
+(use-package projectile
+  :ensure projectile
+  :init (projectile-global-mode))
 
 ;;; rc-editor.el ends here
