@@ -160,40 +160,37 @@
       tramp-default-method "ssh"
       tramp-temp-buffer-file-name (local-file-name "cache/tramp"))
 
-;; ido-mode
-(require 'ido)
-(require 'ido-ubiquitous)
-(require 'flx-ido)
-(require 'smex)
+;; helm all the things!
+(use-package helm
+  :ensure helm
+  :diminish helm-mode
+  :init
+  (progn
+    (require 'helm-config)
 
-(use-package ido-vertical-mode
-  :ensure ido-vertical-mode
-  :config (progn
-            (ido-vertical-mode 1)))
+    (global-set-key (kbd "C-c h") 'helm-command-prefix)
+    (global-unset-key (kbd "C-x c"))
+    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-z")  'helm-select-action)
 
-(ido-mode 'both)
-(ido-everywhere t)
-(setq ido-case-fold t                    ;; be case-insensitive
-      ido-confirm-unique-completion nil  ;; wait for RET, even with unique completion
-      ido-enable-flex-matching nil       ;; not, too smart, baby ...
-      ido-enable-prefix nil
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point nil
-      ido-use-url-at-point nil
-      ido-max-prospects 10
-      ido-use-faces t
-      ido-save-directory-list-file (local-file-name "cache/ido.last")
-      ido-default-file-method 'selected-window)
+    (defun pl/helm-alive-p ()
+      (if (boundp 'helm-alive-p)
+          (symbol-value 'helm-alive-p)))
+    (add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p)
 
-(use-package ido-ubiquitous
-  :ensure ido-ubiquitous
-  :config (ido-ubiquitous-mode +1))
+    (setq helm-M-x-fuzzy-match        t
+          helm-buffers-fuzzy-matching t
+          helm-recentf-fuzzy-match    t)
 
-(use-package flx-ido
-  :ensure flx-ido
-  :init (progn
-          (flx-ido-mode +1)
-          (setq flx-ido-use-faces nil)))
+    (global-set-key (kbd "C-x b")   'helm-mini)
+    (global-set-key (kbd "M-x")     'helm-M-x)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)
+    (global-set-key (kbd "M-y")     'helm-show-kill-ring)
+
+    (helm-mode 1)))
+;; (ido-mode -1)
+
 
 ;; enabled auto-fill mode in text-mode and all related modes
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -327,5 +324,19 @@
 (use-package projectile
   :ensure projectile
   :init (projectile-global-mode))
+
+(use-package helm-projectile
+  :ensure helm-projectile
+  :init
+  (progn
+    (setq projectile-completion-system 'helm)
+    (helm-projectile-on)))
+
+(use-package helm-ag
+  :ensure helm-ag
+  :init (define-key projectile-mode-map (kbd "C-c p /")
+          #'(lambda ()
+              (interactive)
+              (helm-ag (projectile-project-root)))))
 
 ;;; rc-editor.el ends here
