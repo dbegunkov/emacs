@@ -141,7 +141,7 @@
 
 (use-package rainbow-delimiters
   :ensure rainbow-delimiters
-  ;; :config (progn (global-rainbow-delimiters-mode))
+  ;:config (progn (global-rainbow-delimiters-mode))
   )
 
 ;; do not highlight the current line
@@ -348,5 +348,9 @@
           #'(lambda ()
               (interactive)
               (helm-ag (projectile-project-root)))))
+
+(use-package ace-jump
+  :ensure ace-jump-mode
+  :bind ("C-c SPC" . ace-jump-mode))
 
 ;;; rc-editor.el ends here
