@@ -351,6 +351,7 @@
 
 (use-package ace-jump
   :ensure ace-jump-mode
-  :bind ("C-c SPC" . ace-jump-mode))
+  :bind ("C-c SPC" . ace-jump-mode)
+  :init (add-hook 'ace-jump-mode-end-hook 'golden-ratio))
 
 ;;; rc-editor.el ends here
