@@ -189,8 +189,18 @@
     (global-set-key (kbd "M-y")     'helm-show-kill-ring)
 
     (helm-mode 1)))
-;; (ido-mode -1)
 
+(use-package popwin
+  :ensure popwin
+  :diminish popwin-mode
+  :init
+  (progn
+    (setq display-buffer-function 'popwin:display-buffer)
+
+    (popwin-mode 1)
+
+    (push '("^\*helm .+\*$" :regexp t) popwin:special-display-config)
+    (push '("^\*helm-.+\*$" :regexp t) popwin:special-display-config)))
 
 ;; enabled auto-fill mode in text-mode and all related modes
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
@@ -257,13 +267,13 @@
 (setq eshell-directory-name (local-file-name "cache/eshel"))
 
 ;; smex, remember recently and most frequently used commands
-(use-package smex
-  :ensure smex
-  :bind (("M-x" . smex)
-         ("M-X" . smex-major-mode-commands))
-  :init (progn
-          (setq smex-save-file (local-file-name "cache/.smex-items"))
-          (smex-initialize)))
+;; (use-package smex
+;;   :ensure smex
+;;   :bind (("M-x" . smex)
+;;          ("M-X" . smex-major-mode-commands))
+;;   :init (progn
+;;           (setq smex-save-file (local-file-name "cache/.smex-items"))
+;;           (smex-initialize)))
 
 ;; make a shell script executable automatically on save
 (add-hook 'after-save-hook
