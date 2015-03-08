@@ -141,9 +141,8 @@
 
 (use-package rainbow-delimiters
   :ensure rainbow-delimiters
-  :init
-  (progn
-    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)))
+  :config (progn
+            (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)))
 
 ;; do not highlight the current line
 (global-hl-line-mode -1)
@@ -350,7 +349,7 @@
               (interactive)
               (helm-ag (projectile-project-root)))))
 
-(use-package ace-jump
+(use-package ace-jump-mode
   :ensure ace-jump-mode
   :bind ("C-c SPC" . ace-jump-mode)
   :init (add-hook 'ace-jump-mode-end-hook 'golden-ratio))
