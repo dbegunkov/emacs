@@ -141,8 +141,9 @@
 
 (use-package rainbow-delimiters
   :ensure rainbow-delimiters
-  ;:config (progn (global-rainbow-delimiters-mode))
-  )
+  :init
+  (progn
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)))
 
 ;; do not highlight the current line
 (global-hl-line-mode -1)
