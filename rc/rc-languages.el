@@ -18,43 +18,54 @@
   :config (progn
             (venv-initialize-interactive-shells) ;; interactive shell support
             (venv-initialize-eshell)             ;; eshell support
-            (setq venv-location "~/.python-envs/")))
+            (setq venv-location "~/.virtualenvs/")
+
+            (defun projectile-virtualenv-hook ()
+              (let ((project-name (projectile-project-name))
+                    (venvs (venv-list-virtualenvs)))
+                (when (string-match project-name venvs)
+                  (venv-workon project-name))))
+
+            (add-hook 'python-mode-hook 'projectile-virtualenv-hook)))
 
 (use-package anaconda-mode
   :ensure anaconda-mode
-  :diminish anaconda-mode)
+  :diminish anaconda-mode
+  :config (progn
+            (add-hook 'python-mode-hook 'anaconda-mode)
+            (add-hook 'python-mode-hook 'eldoc-mode)))
 
 (use-package company-anaconda
   :ensure company-anaconda
   :config (progn
             (add-to-list 'company-backends 'company-anaconda)))
 
-(use-package python-mode
-  :ensure python-mode
-  :mode ("\\.py\\'" . python-mode)
-  :commands python-mode
-  :config (progn
-            (add-hook 'python-mode-hook
-                      (lambda () (run-hooks 'prog-mode-hook)))
-            (add-hook 'python-mode-hook 'anaconda-mode)
-            (add-hook 'python-mode-hook 'eldoc-mode)
-            (add-hook 'python-mode-hook
-                      (lambda ()
-                        ;; See https://github.com/company-mode/company-mode/issues/105
-                        ;; for details on this nasty bug.
-                        (remove-hook 'completion-at-point-functions
-                                     'py-shell-complete t)
-                        (subword-mode +1)
-                        (electric-indent-mode -1)))))
+;; (use-package python-mode
+;;   :ensure python-mode
+;;   :mode ("\\.py\\'" . python-mode)
+;;   :commands python-mode
+;;   :config (progn
+;;             (add-hook 'python-mode-hook
+;;                       (lambda () (run-hooks 'prog-mode-hook)))
+;;             (add-hook 'python-mode-hook 'anaconda-mode)
+;;             (add-hook 'python-mode-hook 'eldoc-mode)
+;;             (add-hook 'python-mode-hook
+;;                       (lambda ()
+;;                         ;; See https://github.com/company-mode/company-mode/issues/105
+;;                         ;; for details on this nasty bug.
+;;                         (remove-hook 'completion-at-point-functions
+;;                                      'py-shell-complete t)
+;;                         (subword-mode +1)
+;;                         (electric-indent-mode -1)))))
 
-(use-package cython-mode
-  :ensure cython-mode
-  :commands cython-mode
-  :config (add-hook 'cython-mode-hook
-                    (lambda ()
-                      ;; same bug for cython, damit!
-                      (remove-hook 'completion-at-point-functions
-                                   'py-shell-complete t))))
+;; (use-package cython-mode
+;;   :ensure cython-mode
+;;   :commands cython-mode
+;;   :config (add-hook 'cython-mode-hook
+;;                     (lambda ()
+;;                       ;; same bug for cython, damit!
+;;                       (remove-hook 'completion-at-point-functions
+;;                                    'py-shell-complete t))))
 
 ;; Erlang
 
