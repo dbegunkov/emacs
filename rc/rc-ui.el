@@ -14,20 +14,35 @@
   (horizontal-scroll-bar-mode -1))
 
 ;; do this as fast as possible
-(load-theme 'base16-eighties)
+;; (load-theme 'base16-eighties)
+;; (custom-theme-set-faces
+;;  'base16-eighties
+;;  '(linum ((t (:background "#393939" :foreground "#e8e6df"))))
+;;  '(company-tooltip ((t (:background "#747369" :foreground "#e8e6df"))))
+;;  '(company-tooltip-selection ((t (:background "#a09f93" :foreground "#e8e6df"))))
+;;  '(company-tooltip-common ((t (:background "#747369" :foreground "#66cccc"))))
+;;  '(company-tooltip-common-selection ((t (:background "#a09f93" :foreground "#6699cc"))))
+;;  '(company-scrollbar-bg ((t (:background "#a09f93"))))
+;;  '(company-scrollbar-fg ((t (:background "#e8e6df"))))
+;;  '(company-preview ((t (:background "#747369" :foreground "#e8e6df"))))
+;;  '(company-preview-common ((t (:background "#747369" :foreground "#e8e6df"))))
+;;  '(eval-sexp-fu-flash ((t (:background "#747369" :foreground "#e8e6df"))))
+;;  '(eval-sexp-fu-flash-error ((t (:background "#f99157" :foreground "#e8e6df")))))
+
+(load-theme 'sanityinc-tomorrow-eighties)
 (custom-theme-set-faces
- 'base16-eighties
- '(linum ((t (:background "#393939" :foreground "#e8e6df"))))
- '(company-tooltip ((t (:background "#747369" :foreground "#e8e6df"))))
- '(company-tooltip-selection ((t (:background "#a09f93" :foreground "#e8e6df"))))
- '(company-tooltip-common ((t (:background "#747369" :foreground "#66cccc"))))
- '(company-tooltip-common-selection ((t (:background "#a09f93" :foreground "#6699cc"))))
- '(company-scrollbar-bg ((t (:background "#a09f93"))))
- '(company-scrollbar-fg ((t (:background "#e8e6df"))))
- '(company-preview ((t (:background "#747369" :foreground "#e8e6df"))))
- '(company-preview-common ((t (:background "#747369" :foreground "#e8e6df"))))
- '(eval-sexp-fu-flash ((t (:background "#747369" :foreground "#e8e6df"))))
- '(eval-sexp-fu-flash-error ((t (:background "#f99157" :foreground "#e8e6df")))))
+ 'sanityinc-tomorrow-eighties
+ '(linum ((t (:background "#2d2d2d" :foreground "#999999"))))
+ ;; '(company-tooltip ((t (:background "#747369" :foreground "#e8e6df"))))
+ ;; '(company-tooltip-selection ((t (:background "#a09f93" :foreground "#e8e6df"))))
+ ;; '(company-tooltip-common ((t (:background "#747369" :foreground "#66cccc"))))
+ ;; '(company-tooltip-common-selection ((t (:background "#a09f93" :foreground "#6699cc"))))
+ ;; '(company-scrollbar-bg ((t (:background "#a09f93"))))
+ ;; '(company-scrollbar-fg ((t (:background "#e8e6df"))))
+ ;; '(company-preview ((t (:background "#747369" :foreground "#e8e6df"))))
+ ;; '(company-preview-common ((t (:background "#747369" :foreground "#e8e6df"))))
+ '(eval-sexp-fu-flash ((t (:background "#515151" :foreground "#cccccc"))))
+ '(eval-sexp-fu-flash-error ((t (:background "#f2777a" :foreground "#cccccc")))))
 
 (set-fringe-mode '(7 . 1))
 (setq indicate-buffer-boundaries 'left)
