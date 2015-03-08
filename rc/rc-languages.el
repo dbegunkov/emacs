@@ -20,13 +20,20 @@
             (venv-initialize-eshell)             ;; eshell support
             (setq venv-location "~/.virtualenvs/")
 
-            (defun projectile-virtualenv-hook ()
+            (defun venvwrap-projectile-hook ()
               (let ((project-name (projectile-project-name))
                     (venvs (venv-list-virtualenvs)))
                 (when (string-match project-name venvs)
                   (venv-workon project-name))))
 
-            (add-hook 'python-mode-hook 'projectile-virtualenv-hook)))
+            (defun venvwrap-modeline-hook ()
+              (setq-default mode-line-format
+                            (nconc mode-line-format
+                                   '(:eval (concat "venv:" venv-current-name)))))
+
+            (add-hook 'python-mode-hook 'venvwrap-projectile-hook)
+            ;;(add-hook 'venv-postactivate-hook 'venvwrap-modeline-hook)
+))
 
 (use-package anaconda-mode
   :ensure anaconda-mode
