@@ -293,7 +293,8 @@
   :ensure magit
   :commands magit-status
   :bind ("C-c g" . magit-status)
-  :config (setq magit-emacsclient-executable nil))
+  ;; :config (setq magit-emacsclient-executable nil)
+  )
 
 ;; incremental searching
 (use-package anzu
