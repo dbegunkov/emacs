@@ -22,11 +22,9 @@
     smex
     ;; scratch
     diminish
-    ;; exec-path-from-shell ;; not needed on Linux
-    yasnippet
-    dropdown-list
-    use-package
-    base16-theme)
+    exec-path-from-shell ;; not needed on Linux yasnippet
+    dropdown-list use-package base16-theme
+    color-theme-sanityinc-tomorrow)
     "A list of packages to ensure are installed at launch.")
 
 (mapc #'(lambda (package)

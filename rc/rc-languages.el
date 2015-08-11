@@ -136,7 +136,7 @@
 
 ;; (use-package ghci-completion
 ;;   :ensure ghci-completion
-;;   :init (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion))
+;;   :config (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion))
 
 
 ;; ;; OCaml
@@ -169,7 +169,7 @@
 ;; (use-package coffee-mode
 ;;   :ensure coffee-mode
 ;;   :commands coffee-mode
-;;   :init (add-hook 'coffee-mode-hook
+;;   :config (add-hook 'coffee-mode-hook
 ;;                   '(lambda ()
 ;;                      (set (make-local-variable 'tab-width) 2)
 ;;                      (setq coffee-args-compile '("-c", "--bare")
@@ -183,7 +183,7 @@
 ;; ;; C, C++
 
 ;; (use-package cc-mode
-;;   :init (add-hook 'c-mode-common-hook
+;;   :config (add-hook 'c-mode-common-hook
 ;;                   '(lambda ()
 ;;                      (local-set-key (kbd "RET") 'newline-and-indent)
 ;;                      (setq c-default-style "linux"
@@ -267,8 +267,9 @@
 
 (use-package clojure-mode
   :ensure clojure-mode
-  :mode "\\.cljx?s?$"
+  :mode "\\.s?cljx?\\|boot$"
   :config (progn
+            (put-clojure-indent 'this-as 1)
             (add-hook 'clojure-mode-hook 'smartparens-strict-mode)
             (add-hook 'clojure-mode-hook 'typed-clojure-mode)
             (add-hook 'clojure-mode-hook 'subword-mode)

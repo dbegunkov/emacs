@@ -30,8 +30,21 @@
 
 (use-package smartparens
   :ensure smartparens
-  :init (sp-with-modes '(html-mode sgml-mode)
-          (sp-local-pair "<" ">")))
+  :config (sp-with-modes '(html-mode sgml-mode)
+            (sp-local-pair "<" ">")))
+
+(use-package web-mode
+  :ensure web-mode
+  :config (progn
+            (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+            (add-hook 'web-mode-hook '(lambda() (whitespace-mode -1)))
+            (setq web-mode-engines-alist
+                  '(("django"    . "\\.html\\'")))
+            (setq web-mode-markup-indent-offset 4
+                  web-mode-indent-style 4
+                  web-mode-code-indent-offset 4)
+            (setq web-mode-enable-auto-pairing nil)
+            (setq whitespace-global-modes '(not web-mode))))
 
 ;; gettext
 
@@ -54,10 +67,10 @@
 
 (use-package tex-site
   :ensure auctex
-  :init (progn
-          ;; (when-osx
-          ;;     (setq TeX-view-program-list '(("Preview" "open %o"))
-          ;;           TeX-view-program-selection '((output-pdf "Preview"))))
+  :config (progn
+          (when-osx
+              (setq TeX-view-program-list '(("Preview" "open %o"))
+                    TeX-view-program-selection '((output-pdf "Preview"))))
 
           (require 'texmathp)
 

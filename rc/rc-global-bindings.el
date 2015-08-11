@@ -1,5 +1,9 @@
 ;;; rc-global-bindings.el ---
 
+;; Mac-specific things
+;; map left cmd to meta
+(setq ns-command-modifier 'meta
+      ns-right-command-modifier 'super)
 
 ;; File finding
 (global-set-key (kbd "C-x C-b") 'ibuffer)

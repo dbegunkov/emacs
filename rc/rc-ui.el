@@ -1,15 +1,21 @@
 ;;; rc-ui.el ---
 
-(set-frame-font "Source Code Pro Medium-10")
+;;(set-face-attribute 'default nil :font "M+ 1mn 13" :weight 'regular)
+(set-face-attribute 'default nil :font "Source Code Pro 13" :weight 'regular)
 ;; cyr font for cyr characters, Source Code Pro doesn't support it
-(set-fontset-font "fontset-default"
-                  '(#x0400 . #x04ff)
-                  "Dejavu Sans Mono-10")
+;;(set-fontset-font "fontset-default"
+;;                  '(#x0400 . #x04ff)
+;;                  "Dejavu Sans Mono-10")
 
-(modify-all-frames-parameters '((fullscreen . maximized)))
+;; (modify-all-frames-parameters '((fullscreen . maximized)))
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(when-osx
+    (setq ns-use-native-fullscreen nil
+          ns-use-fullscreen-animation nil)
+  ;; (toggle-frame-fullscreen)
+  )
 (when (fboundp 'horizontal-scroll-bar-mode)
   (horizontal-scroll-bar-mode -1))
 
@@ -68,9 +74,9 @@
           (sml/setup)))
 
 ;; different splits
-(use-package golden-ratio
-  :ensure golden-ratio
-  :diminish golden-ratio-mode
-  :init (golden-ratio-mode))
+;; (use-package golden-ratio
+;;   :ensure golden-ratio
+;;   :diminish golden-ratio-mode
+;;   :init (golden-ratio-mode))
 
 ;;; rc-ui.el ends here

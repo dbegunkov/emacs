@@ -150,7 +150,7 @@
 (use-package volatile-highlights
   :ensure volatile-highlights
   :diminish volatile-highlights-mode
-  :init (volatile-highlights-mode t))
+  :config (volatile-highlights-mode t))
 
 ;; tramp, for sudo access
 (require 'tramp)
@@ -164,7 +164,7 @@
 (use-package helm
   :ensure helm
   :diminish helm-mode
-  :init
+  :config
   (progn
     (require 'helm-config)
 
@@ -174,10 +174,10 @@
     (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
     (define-key helm-map (kbd "C-z")  'helm-select-action)
 
-    (defun pl/helm-alive-p ()
-      (if (boundp 'helm-alive-p)
-          (symbol-value 'helm-alive-p)))
-    (add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p)
+    ;; (defun pl/helm-alive-p ()
+    ;;   (if (boundp 'helm-alive-p)
+    ;;       (symbol-value 'helm-alive-p)))
+    ;; (add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p)
 
     (setq helm-M-x-fuzzy-match        t
           helm-buffers-fuzzy-matching t
@@ -192,8 +192,8 @@
 
 (use-package popwin
   :ensure popwin
-  :diminish popwin-mode
-  :init
+  ;; :diminish popwin-mode
+  :config
   (progn
     (setq display-buffer-function 'popwin:display-buffer)
 
@@ -216,13 +216,13 @@
 ;; load flycheck
 ;; (use-package flycheck
 ;;   :ensure flycheck
-;;   :init (add-hook 'after-init-hook #'global-flycheck-mode))
+;;   :config (add-hook 'after-init-hook #'global-flycheck-mode))
 
 ;; load auto-complete
 (use-package company
   :ensure company
-  :init (global-company-mode)
   :config (progn
+            (global-company-mode)
             (setq company-idle-delay 0.2)))
 
 ;; use TAB for completion and indentation
@@ -271,7 +271,7 @@
 ;;   :ensure smex
 ;;   :bind (("M-x" . smex)
 ;;          ("M-X" . smex-major-mode-commands))
-;;   :init (progn
+;;   :config (progn
 ;;           (setq smex-save-file (local-file-name "cache/.smex-items"))
 ;;           (smex-initialize)))
 
@@ -284,21 +284,21 @@
   :ensure undo-tree
   :diminish undo-tree-mode
   :commands undo-tree
-  :init (progn
-          (global-undo-tree-mode 1)
-          (defalias 'redo 'undo-tree-redo)))
+  :config (progn
+            (global-undo-tree-mode 1)
+            (defalias 'redo 'undo-tree-redo)))
 
 ;; my git
 (use-package magit
   :ensure magit
   :commands magit-status
   :bind ("C-c g" . magit-status)
-  :init (setq magit-emacsclient-executable nil))
+  :config (setq magit-emacsclient-executable nil))
 
 ;; incremental searching
 (use-package anzu
   :ensure anzu
-  :init (global-anzu-mode +1))
+  :config (global-anzu-mode +1))
 
 ;; better grep-find
 (use-package ag
@@ -308,22 +308,78 @@
                 ag-reuse-window t))
 
 ;; fix me already!
-(use-package fixmee
-  :ensure fixmee
-  :diminish fixmee-mode
-  :init (global-fixmee-mode 1))
+;; (use-package fixmee
+;;   :ensure fixmee
+;;   :diminish fixmee-mode
+;;   :config (global-fixmee-mode 1))
 
 ;; view large files easily
 (use-package vlf
   :ensure vlf
   :commands vlf
-  :init (require 'vlf-setup))
+  :config (require 'vlf-setup))
 
 ;; semantic region expansion
 (use-package expand-region
   :ensure expand-region
-  :bind ("C-=" . er/expand-region)
-        ("C--" . er/contract-region))
+  :bind
+  ("C-=" . er/expand-region)
+  ("C--" . er/contract-region)
+  :config (progn
+            ;; see https://github.com/magnars/expand-region.el/issues/160
+            (defun er--expand-region-1 ()
+              "Increase selected region by semantic units.
+Basically it runs all the mark-functions in `er/try-expand-list'
+and chooses the one that increases the size of the region while
+moving point or mark as little as possible."
+              (let* ((p1 (point))
+                     (p2 (if (use-region-p) (mark) (point)))
+                     (start (min p1 p2))
+                     (end (max p1 p2))
+                     (try-list er/try-expand-list)
+                     (best-start (point-min))
+                     (best-end (point-max))
+                     (set-mark-default-inactive nil))
+
+                ;; add hook to clear history on buffer changes
+                (unless er/history
+                  (add-hook 'after-change-functions 'er/clear-history t t))
+
+                ;; remember the start and end points so we can contract later
+                ;; unless we're already at maximum size
+                (unless (and (= start best-start)
+                             (= end best-end))
+                  (push (cons start end) er/history))
+
+                (when (and expand-region-skip-whitespace
+                           (er--point-is-surrounded-by-white-space)
+                           (= start end))
+                  (skip-chars-forward er--space-str)
+                  (setq start (point)))
+
+                (while try-list
+                  (save-excursion
+                    (ignore-errors
+                      (setq mark-active nil) ; Fix by Stefan Monnier
+                      (funcall (car try-list))
+                      (when (and (region-active-p)
+                                 (er--this-expansion-is-better start end best-start best-end))
+                        (setq best-start (point))
+                        (setq best-end (mark))
+                        (when (and er--show-expansion-message (not (minibufferp)))
+                          (message "%S" (car try-list))))))
+                  (setq try-list (cdr try-list)))
+
+                (setq deactivate-mark nil)
+                (goto-char best-start)
+                (set-mark best-end)
+
+                (er--copy-region-to-register)
+
+                (when (and (= best-start (point-min))
+                           (= best-end (point-max))) ;; We didn't find anything new, so exit early
+                  'early-exit))))
+  )
 
 ;; better current major mode help
 (use-package discover-my-major
@@ -333,18 +389,18 @@
 ;; projectile for searching in projects
 (use-package projectile
   :ensure projectile
-  :init (projectile-global-mode))
+  :config (projectile-global-mode))
 
 (use-package helm-projectile
   :ensure helm-projectile
-  :init
+  :config
   (progn
     (setq projectile-completion-system 'helm)
     (helm-projectile-on)))
 
 (use-package helm-ag
   :ensure helm-ag
-  :init (define-key projectile-mode-map (kbd "C-c p /")
+  :config (define-key projectile-mode-map (kbd "C-c p /")
           #'(lambda ()
               (interactive)
               (helm-ag (projectile-project-root)))))
@@ -352,6 +408,7 @@
 (use-package ace-jump-mode
   :ensure ace-jump-mode
   :bind ("C-c SPC" . ace-jump-mode)
-  :init (add-hook 'ace-jump-mode-end-hook 'golden-ratio))
+  ;; :config (add-hook 'ace-jump-mode-end-hook 'golden-ratio)
+  )
 
 ;;; rc-editor.el ends here

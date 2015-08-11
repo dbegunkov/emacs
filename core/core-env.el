@@ -10,14 +10,17 @@
 (setq user-full-name "Dmitry Groshev")
 (setq user-mail-address "lambdadmitry@gmail.com")
 
-;; don't need the following on Linux
-;;
-;; (require 'exec-path-from-shell)
-;; (exec-path-from-shell-initialize)
+(setq mac-option-modifier 'meta)
 
-;; (defmacro when-osx (&rest body)
-;;   (declare (indent 1) (debug t))
-;;   (list 'if (eq system-type 'darwin) (cons 'progn body)))
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
+(defmacro when-osx (&rest body)
+  (declare (indent 1) (debug t))
+  (list 'if (eq system-type 'darwin) (cons 'progn body)))
+
+;; it is needed to avoid gap on top of the window
+(setq frame-resize-pixelwise t)
 
 ;; Make sure Emacs uses Mountain Lion fullscreen feature, only avail. since
 ;; Emacs 24.3.
