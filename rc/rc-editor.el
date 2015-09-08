@@ -293,6 +293,9 @@
   :ensure magit
   :commands magit-status
   :bind ("C-c g" . magit-status)
+  :config (progn
+            (setq magit-push-always-verify nil)
+            (add-to-list 'magit-no-confirm 'stage-all-changes))
   ;; :config (setq magit-emacsclient-executable nil)
   )
 
