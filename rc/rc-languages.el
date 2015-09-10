@@ -166,6 +166,10 @@
 
 ;; ;; Coffee
 
+(use-package coffee-mode
+  :ensure coffee-mode
+  :config (custom-set-variables '(coffee-tab-width 2)))
+
 ;; (use-package coffee-mode
 ;;   :ensure coffee-mode
 ;;   :commands coffee-mode
