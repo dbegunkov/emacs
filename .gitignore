@@ -17,3 +17,4 @@ custom.el*
 private.el*
 packages/
 projectile-bookmarks.eld
+anaconda-mode/
