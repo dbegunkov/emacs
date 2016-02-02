@@ -190,6 +190,13 @@
 
     (helm-mode 1)))
 
+;; (use-package shackle
+;;   :ensure shackle
+;;   :config
+;;   (progn
+;;     (setq shackle-rules '(("^\*helm[ -].+\*$" :regexp t :align below :size 0.3)))
+;;     (shackle-mode 1)))
+
 (use-package popwin
   :ensure popwin
   ;; :diminish popwin-mode
@@ -200,7 +207,16 @@
     (popwin-mode 1)
 
     (push '("^\*helm .+\*$" :regexp t) popwin:special-display-config)
-    (push '("^\*helm-.+\*$" :regexp t) popwin:special-display-config)))
+    (push '("^\*helm-.+\*$" :regexp t) popwin:special-display-config)
+
+    ;; (add-hook 'helm-after-initialize-hook (lambda ()
+    ;;                                         (popwin:display-buffer helm-buffer t)
+    ;;                                         (popwin-mode -1)))
+
+    ;;  Restore popwin-mode after a Helm session finishes.
+    ;; (add-hook 'helm-cleanup-hook (lambda () (popwin-mode 1)))
+
+    (setq helm-split-window-preferred-function 'ignore)))
 
 ;; enabled auto-fill mode in text-mode and all related modes
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
