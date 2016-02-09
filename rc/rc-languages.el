@@ -97,7 +97,8 @@
                             (directory-any-file-glob
                              (concat erlang-root-dir "/lib/tools-*")))
                            "emacs"))
-
+(add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
   (require 'erlang-start))
 
 ;; Haskell

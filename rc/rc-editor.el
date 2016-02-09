@@ -222,7 +222,12 @@
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; load yasnippet
+;; yasnippet
+;; (add-to-list 'load-path "~/.emacs.d/yasnippet-0.8.0")
 (require 'yasnippet)
+;; (setq yas-snippet-dirs '("~/.emacs.d/yasnippet-0.8.0/snippets"))
+;; (yas-global-mode 1)
+;; (require 'yasnippet)
 (require 'dropdown-list)
 (add-to-list 'yas-snippet-dirs (local-file-name "snippets"))
 (yas-global-mode 1)
@@ -305,15 +310,15 @@
             (defalias 'redo 'undo-tree-redo)))
 
 ;; my git
-(use-package magit
-  :ensure magit
-  :commands magit-status
-  :bind ("C-c g" . magit-status)
-  :config (progn
-            (setq magit-push-always-verify nil)
-            (add-to-list 'magit-no-confirm 'stage-all-changes))
-  ;; :config (setq magit-emacsclient-executable nil)
-  )
+;; (use-package magit
+;;   :ensure magit
+;;   :commands magit-status
+;;   :bind ("C-c g" . magit-status)
+;;   :config (progn
+;;             (setq magit-push-always-verify nil)
+;;             (add-to-list 'magit-no-confirm 'stage-all-changes))
+;;   ;; :config (setq magit-emacsclient-executable nil)
+;;   )
 
 ;; incremental searching
 (use-package anzu
