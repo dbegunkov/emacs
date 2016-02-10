@@ -7,8 +7,8 @@
 
 (custom-set-variables '(shell-file-name "zsh"))
 
-(setq user-full-name "Dmitry Groshev")
-(setq user-mail-address "lambdadmitry@gmail.com")
+(setq user-full-name "Dmitry Begunkov")
+(setq user-mail-address "dbegunkov@gmail.com")
 
 (setq mac-option-modifier 'meta)
 
