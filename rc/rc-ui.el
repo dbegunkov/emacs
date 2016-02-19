@@ -30,6 +30,7 @@
   `(eval-sexp-fu-flash ((t (:background ,contrast-bg :foreground ,foreground))))
   `(eval-sexp-fu-flash-error ((t (:background ,red :foreground ,foreground))))))
 
+
 (set-fringe-mode '(7 . 1))
 (setq indicate-buffer-boundaries 'left)
 

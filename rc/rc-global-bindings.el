@@ -19,5 +19,6 @@
 (global-set-key (kbd "C-,") 'textmate-shift-left)
 (global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "C-S-z") 'redo)
+(global-set-key (kbd "C-v") 'yank)
 
 ;;; rc-global-bindings.el ends here
