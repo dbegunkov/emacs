@@ -29,7 +29,10 @@
   `(company-tooltip ((t (:background ,contrast-bg :foreground ,comment))))
   `(eval-sexp-fu-flash ((t (:background ,contrast-bg :foreground ,foreground))))
   `(eval-sexp-fu-flash-error ((t (:background ,red :foreground ,foreground))))))
-
+(defface helm-ff-directory
+  '((t (:foreground "Blue" :background "Black")))
+  "Face used for directories in `helm-find-files'."
+  :group 'helm-files-faces)
 
 (set-fringe-mode '(7 . 1))
 (setq indicate-buffer-boundaries 'left)
